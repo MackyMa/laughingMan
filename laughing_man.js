@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
         //set attributes/property of the element 
         square.src = "laughing_man.jpg";
         square.alt = "Catch the Laughing Man!";
-        square.class = "square";
+        square.className = "square";
         box.appendChild(square);
     }
 });
