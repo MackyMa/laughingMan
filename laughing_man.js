@@ -9,6 +9,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
     let box = document.querySelector("#box");
 
+    document.querySelector("#square").addEventListener("mouseover", function() {
+        this.style.backgroundColor = getColor();
+    });
+
+    document.querySelector("#square").addEventListener("mouseout", function() {
+        this.style.backgroundColor = "red";
+    });
+
     for(let i = 0; i < Square_Count; i++) {
         //make the element
         let square = document.createElement("img");
@@ -16,6 +24,17 @@ document.addEventListener("DOMContentLoaded", function() {
         square.src = "laughing_man.jpg";
         square.alt = "Catch the Laughing Man!";
         square.className = "square";
+
+        //mouseover
+        square.addEventListener("mouseover", function() {
+            square.src = "orochimaru_50x50.jpg";
+        });
+
+        //mouseout
+        square.addEventListener("mouseout", function() {
+            square.src = "laughing_man.jpg";
+        });
+
         box.appendChild(square);
     }
 
@@ -34,9 +53,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
             if(x <= 0 || x >= maxX) {
                 dx*= -1;
+                element.style.backgroundColor = getColor();
+                element.style.borderColor = getColor();
             }
             if(y <= 0 || y >= maxY) {
                 dy *= -1;
+                element.style.backgroundColor = getColor();
+                element.style.borderColor = getColor();
             }
 
             x += dx;
@@ -50,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
-function newColor(){
+function getColor(){
     let r = Math.floor(Math.random()*256);
     let g = Math.floor(Math.random()*256);
     let b = Math.floor(Math.random()*256);
