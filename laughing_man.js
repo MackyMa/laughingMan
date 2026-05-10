@@ -1,4 +1,4 @@
-const Square_Count=3;
+const Square_Count=30;
 const Timer_Speed=16.6;
 const Speed=5;
 
@@ -20,12 +20,25 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     Array.from(box.children).forEach((element) => {
+        const parent = element.parentElement;
+        const maxX = parent.clientWidth - element.clientWidth;
+        const maxY = parent.clientHeight - element.clientHeight;
+
         let dx = Speed*(Math.random()*2-1);
         let dy = Speed*(Math.random()*2-1);
 
-        let x = parseInt(element.computedStyleMap.left) || 0;
-        let y = parseInt(element.computedStyleMap.top) || 0;
+        let x = parseInt(element.computedStyleMap.left) || 255;
+        let y = parseInt(element.computedStyleMap.top) || 175;
+
         setInterval(() => {
+
+            if(x <= 0 || x >= maxX) {
+                dx*= -1;
+            }
+            if(y <= 0 || y >= maxY) {
+                dy *= -1;
+            }
+
             x += dx;
             y += dy;
 
